@@ -1,0 +1,30 @@
+[
+  {
+    "Name": "Spaghetti Carbonara",
+    "Ingredients": [
+      "Makaron",
+      "Jajka",
+      "Boczek",
+      "Ser Pecorino",
+      "Pieprz"
+    ]
+  },
+  {
+    "Name": "Pizza Margherita",
+    "Ingredients": [
+      "Ciasto",
+      "Sos pomidorowy",
+      "Mozzarella",
+      "Bazylia"
+    ]
+  },
+  {
+    "Name": "Bigos",
+    "Ingredients": [
+      "Kapusta",
+      "Wikusia",
+      "Karol",
+      "Love"
+    ]
+  }
+]
