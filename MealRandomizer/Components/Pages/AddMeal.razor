@@ -1,0 +1,35 @@
+﻿@page "/add-meal"
+@inject MealService MealService
+@rendermode InteractiveServer
+
+<h3>Dodaj obiad</h3>
+
+<div>
+    <input @bind="newMeal.Name" placeholder="Nazwa obiadu" class="form-control" />
+    <textarea @bind="ingredientInput" placeholder="Składniki, oddzielone przecinkiem" class="form-control mt-2"></textarea>
+    <button @onclick="SaveMeal" class="btn btn-primary mt-2">Dodaj</button>
+
+    
+</div>
+@if (lastAddedMeal != "")
+{
+    <h5 class="mt-2">Dodany posiłek: @lastAddedMeal</h5>
+}
+@code {
+    private Meal newMeal = new();
+    private string ingredientInput = "";
+    private string lastAddedMeal = "";
+
+    private void SaveMeal()
+    {
+        newMeal.Ingredients = ingredientInput.Split(',').Select(i => i.Trim()).Where(i => !string.IsNullOrEmpty(i)).ToList();
+        if (!string.IsNullOrEmpty(newMeal.Name) && newMeal.Ingredients.Count > 0)
+        {
+            lastAddedMeal = newMeal.Name;
+            MealService.AddMeal(newMeal);
+            newMeal = new Meal();
+            ingredientInput = "";
+        }
+        StateHasChanged();
+    }
+}
